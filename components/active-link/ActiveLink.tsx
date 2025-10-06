@@ -1,19 +1,21 @@
-'use-client'
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface Props {
   path: string;
   text: string;
 }
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export const ActiveLink = ({ path, text }: Props) => {
-    const pathName=usePathname();
+  const pathName = usePathname();
   return (
     <>
       <Link
-      
-      href={path}
+        className={`hover:underline hover:text-blue-400 mr-2 transition-all ${
+          pathName == path && "text-blue-500"
+        }`}
+        href={path}
       >
         {text}
       </Link>
